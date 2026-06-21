@@ -96,6 +96,18 @@ hr {
     border-left: 2px solid #cfcfcf;
     position: relative;
 }
+.ico img {
+    display: block;
+    width: 100%;
+    max-width: 42px;
+    max-height: 42px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin: 2px 0 0 12px;
+}
+@media (max-width: 991px) {
+    .ico img { max-width: 34px; max-height: 34px; margin-left: 8px; }
+}
 .desc {
     grid-column: span 10;
     vertical-align: top;
