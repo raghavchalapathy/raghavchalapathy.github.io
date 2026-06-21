@@ -105,14 +105,14 @@ hr {
 .ico img {
     display: block;
     width: 100%;
-    max-width: 42px;
-    max-height: 42px;
+    max-width: 64px;
+    max-height: 64px;
     object-fit: contain;
     border-radius: 5px;
-    margin: 2px 0 0 12px;
+    margin: 4px 0 0 14px;
 }
 @media (max-width: 991px) {
-    .ico img { max-width: 34px; max-height: 34px; margin-left: 8px; }
+    .ico img { max-width: 46px; max-height: 46px; margin-left: 8px; }
 }
 .desc {
     grid-column: span 10;
