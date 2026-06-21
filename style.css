@@ -44,6 +44,12 @@ h1 {
     padding: 0;
     margin: 0;
 }
+h1 .phd {
+    color: #0a66c2;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
 h2 {
     font-weight: normal;
     font-style: italic;
@@ -204,6 +210,14 @@ hr {
 .post-title:hover { color: #FF6719; text-decoration: underline; }
 .post-sub { color: #777; font-size: 14px; }
 
+/* Section title inline icon */
+.title-ico {
+    width: 28px;
+    height: 28px;
+    vertical-align: -3px;
+    margin-right: 8px;
+}
+
 /* Community CTA banner */
 .cta {
     margin: 30px 0 10px 0;
@@ -221,7 +235,9 @@ hr {
 .cta-sub { font-size: 15px; opacity: 0.9; margin-top: 4px; max-width: 520px; }
 .cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px 18px;
     border-radius: 6px;
     font-weight: bold;
@@ -231,7 +247,13 @@ hr {
 }
 .btn:hover { transform: translateY(-2px); opacity: 0.92; }
 .btn-substack { background: #FF6719; color: white; }
-.btn-skool { background: white; color: #0E64F5; }
+.btn-skool { background: white; color: #111; }
+.btn-ico {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+}
 
 /* Links */
 a { color: #0a66c2; }
