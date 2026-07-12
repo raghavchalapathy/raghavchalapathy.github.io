@@ -1,0 +1,238 @@
+================================================================================
+ PROFILE WEBSITE PLAN  —  "karpathy.ai-style" personal site for Raghav Chalapathy
+ Author: rc (code-puppy) | Status: PLANNING ONLY (no site code written yet)
+================================================================================
+
+--------------------------------------------------------------------------------
+0. THE SHORT ANSWER TO YOUR QUESTION
+--------------------------------------------------------------------------------
+Q: Can I build a karpathy.ai-style site and host it on GitHub Pages?
+A: YES. Emphatically yes. karpathy.ai is the textbook GitHub-Pages use case.
+
+Karpathy's own words (literally in his page source, bottom of the page):
+   "0 frameworks were used to make this simple responsive website because I am
+    becoming seriously allergic to 500-pound websites. This one is pure HTML and
+    CSS in two static files and that's it."
+
+So the entire site is:
+   - index.html        (all the content/markup)
+   - style.css         (all the styling, ~330 lines)
+   - assets/           (images: profile pic, logos, talk thumbnails, svg icons)
+   - a tiny inline <script> (only to reveal his email via rot13, anti-spam)
+
+That is EXACTLY what GitHub Pages serves best: static files, no build step,
+no server, no database. Free hosting, HTTPS included, custom domain supported.
+
+--------------------------------------------------------------------------------
+1. ANATOMY OF karpathy.ai  (how it is constructed)
+--------------------------------------------------------------------------------
+Tech stack: Plain HTML5 + CSS3. No JS framework, no build tool, no CSS framework
+(no Bootstrap/Tailwind). One small vanilla-JS snippet for email reveal.
+
+LAYOUT TECHNIQUE:
+  - A reusable ".container" centered wrapper (max-width 970px on desktop).
+  - A 12-column CSS GRID system built by hand:
+        .row { display: grid; grid-template-columns: repeat(12, 1fr); }
+        children use grid-column: span N;  (e.g. span 6 = half width)
+  - Responsive via @media queries at 991px / 768px breakpoints:
+        on mobile, columns collapse to "span 12" (full width, stacked).
+  - NO JavaScript needed for responsiveness — pure CSS grid + media queries.
+
+PAGE SECTIONS (top to bottom), each is just a <div class="container">:
+  1. HEADER (#dhead)
+        - Left: round profile photo (border-radius makes it a circle)
+        - Right: <h1> name, <h2> italic tagline, row of social icon links (svg)
+        - Email icon that reveals address on click (rot13 obfuscation vs spambots)
+  2. <hr> gradient divider
+  3. TIMELINE / HISTORY (#history)  <-- the signature visual element
+        - A vertical timeline. Each job/edu = ".entry row":
+             .timespan  (years, right-aligned, grey)   span 1
+             .ico       (a small logo + a "dot" on a vertical line)  span 1
+             .desc      (paragraph describing the role)  span 10
+        - The vertical line is just `border-left` on .ico; the dots are
+          absolutely-positioned little circles (.entry-dot).
+  4. BIO (short paragraph)
+  5. FEATURED TALKS (#featured-talks)
+        - A grid of cards (".card", span 3 desktop / span 6 mobile),
+          each = thumbnail image + caption, linking to YouTube/podcast.
+  6. PUBLICATIONS list
+        - Each ".pub": colored left-border block with
+             .pub-title (linked), .pub-venue (green), .pub-authors
+  7. MISC / UNSORTED  (a simple <ul> of links)
+  8. Footer whitespace + the rot13 email <script>.
+
+KEY CSS PATTERNS WORTH STEALING:
+  - Circular avatar:  width/height fixed + border-radius: 50%.
+  - Gradient <hr>:    linear-gradient transparent->dark->transparent.
+  - Card hover-less simplicity, subtle borders (#ddd), light grey panels (#eee).
+  - Typography: system "sans-serif", 16px base, line-height 1.4, color #333.
+  - Italic muted subtitle (h2 color #999).
+  - Everything is mobile-first-ish via two clean breakpoints. No magic.
+
+WHY IT WORKS / DESIGN PHILOSOPHY (worth copying):
+  - Minimalism. Loads instantly. Accessible. Ages well. Zero maintenance.
+  - Content-first: it's basically an interactive resume + portfolio.
+  - DRY: one .container, one .row grid reused everywhere. YAGNI in the flesh.
+
+--------------------------------------------------------------------------------
+2. MAPPING KARPATHY'S SECTIONS -> YOUR (RAGHAV'S) CONTENT
+--------------------------------------------------------------------------------
+Pulled from CV_Raghav_Chalapathy_Resume.pdf. Reuse the SAME layout, swap content.
+
+HEADER:
+  - Name: Raghav Chalapathy  (publications use "Raghavendra Chalapathy")
+  - Tagline ideas (pick/edit one):
+       "I build deep learning systems for anomaly detection & forecasting "
+       "Staff Data Scientist | Deep Learning for Anomaly Detection & Time Series"
+  - Social/contact icons -> link to:
+       GitHub:   https://github.com/raghavchalapathy/
+       LinkedIn: (LinkedIn profile from resume)
+       Google Scholar: (Google Scholar profile from resume)
+       Email:    raghav.chalapathy@gmail.com  (use rot13 reveal trick, or a
+                 simple mailto: if you don't care about spambots)
+  - Profile photo: NEED A HEADSHOT (you must supply assets/me.jpg).
+
+TIMELINE / HISTORY (newest first, mirrors karpathy's career timeline):
+   2022 - present : Walmart Global Tech — Staff Data Scientist (Walmart Labs)
+                    Building Next-Gen Geo-Demand Forecasting Platform.
+   2019 - 2022    : CSIRO's Data61 — Research Fellow, Transport & Analytics Group
+                    Anomaly detection for structural health monitoring (Sydney
+                    Harbour Bridge), HVAC/solar energy forecasting, PhD supervision.
+   2015 - 2019    : NSW Ministry of Health — Data Scientist / Research Officer
+                    Service-usage pattern mining, NLP on ambulance/ED data.
+   2006 - 2015    : Huawei Technologies, Bangalore — Senior Technical Leader
+                    ML for software-failure detection, security audits, led team of 5.
+   EDUCATION (can be its own timeline entries or a separate block):
+     2015 - 2019  : PhD, Computer Science — University of Sydney
+     2011 - 2013  : MS Information Science & Security — Illinois Institute of Tech
+     2000 - 2004  : B.E. Telecommunication Eng. — R.V. College of Engineering, India
+   (Tip: each entry can show an org logo in the .ico column, like karpathy does.)
+
+BIO (short paragraph): Synthesize from resume —
+   "Raghav Chalapathy is a Staff Data Scientist at Walmart Global Tech. His work
+    focuses on deep learning for anomaly detection, NLP, and time-series
+    forecasting. He completed his PhD at the University of Sydney and has worked
+    across industry and research (CSIRO Data61, NSW Health, Huawei). Part of the
+    Walmart team that won the Edelman and INFORMS awards (2023)."
+
+AWARDS & ACHIEVEMENTS (could be a small section or folded into bio):
+   - Edelman & INFORMS Awards — Walmart Applied AI team (Apr 2023)
+   - Bronze Medal, Academic Track — Global AI Challenge (Feb 2022)
+   - Intelligent Transport System (ITS) Australia National Award (Dec 2020)
+
+PUBLICATIONS (use karpathy's .pub block style — title/venue/authors):
+   - "Applied ML Methods for Time Series Forecasting" — CIKM 2022
+   - "Dual-Stage Bayesian Seq2Seq Embeddings for Energy Demand Forecasting"
+        — PAKDD 2021
+   - "Robust Deep Anomaly Detection" — KDD 2020 (Hands-On Workshop)
+   - "Deep Learning for Anomaly Detection: A Survey" — arXiv:1901.03407 (2019)
+   - link out: "Also on Google Scholar" (from resume).
+
+CERTIFICATIONS (optional small section):
+   - CISSP (ISC2), Cloudera Certified Data Scientist.
+
+SKILLS (optional — karpathy doesn't have this, but it suits a data-sci resume):
+   - Python (scikit-learn, numpy, pandas, PyTorch, TensorFlow, Keras), R, SQL,
+     Spark/Hadoop, etc. Keep it tasteful, not a keyword soup.
+
+MISC / UNSORTED (links):
+   - GitHub, Google Scholar, LinkedIn, any blog, talks, side projects.
+
+--------------------------------------------------------------------------------
+3. PROPOSED FILE STRUCTURE (when we build it)
+--------------------------------------------------------------------------------
+profileWebsite/
+  ├── index.html            <- all markup (sections above)
+  ├── style.css             <- adapted from karpathy's grid/timeline patterns
+  ├── assets/
+  │     ├── me.jpg          <- YOUR headshot (REQUIRED, you provide)
+  │     ├── walmart.png, csiro.png, nswhealth.png, huawei.png,
+  │     │   usyd.png, iit.png, rvce.png   <- org/edu logos (optional, nice touch)
+  │     ├── github.svg, linkedin.svg, scholar.svg, email.svg  <- icon set
+  │     └── (talk/project thumbnails if you add a "talks/projects" section)
+  ├── CNAME                 <- only if using a custom domain (e.g. raghav.ai)
+  ├── .nojekyll             <- tells GitHub Pages to skip Jekyll processing
+  ├── README.md             <- repo description
+  └── plan.txt              <- this file
+
+Note: keep it to ~2-3 static files like karpathy. DRY + YAGNI. No frameworks.
+
+--------------------------------------------------------------------------------
+4. HOW TO HOST ON GITHUB PAGES (step-by-step, do this AFTER building)
+--------------------------------------------------------------------------------
+OPTION A — User/Org site (cleanest URL: https://<username>.github.io):
+  1. Create a repo named EXACTLY:  <your-github-username>.github.io
+     (e.g. raghavchalapathy.github.io)
+  2. Put index.html + style.css + assets/ at the repo ROOT.
+  3. git init, add, commit, push to the 'main' branch.
+  4. Repo -> Settings -> Pages -> Source: "Deploy from a branch" ->
+     Branch: main, Folder: / (root) -> Save.
+  5. Wait ~1 min. Site goes live at https://<username>.github.io
+  6. Add a .nojekyll file at root (avoids Jekyll mangling any _underscored files).
+
+OPTION B — Project site (URL: https://<username>.github.io/<repo>):
+  - Same as above but repo can be named anything (e.g. "profile-website").
+  - Site serves under a subpath, so use RELATIVE asset paths (e.g. "assets/..",
+    not "/assets/..") so images resolve correctly. (Good practice anyway.)
+
+CUSTOM DOMAIN (optional, if you own e.g. raghav.ai like karpathy owns karpathy.ai):
+  1. Buy domain from a registrar (Namecheap, Cloudflare, Google Domains, etc).
+  2. Add a file named "CNAME" at repo root containing just:  raghav.ai
+  3. At your DNS provider, add records:
+        - Apex domain (raghav.ai): 4x A records to GitHub Pages IPs:
+              185.199.108.153
+              185.199.109.153
+              185.199.110.153
+              185.199.111.153
+          (and AAAA records for IPv6 if you want — GitHub publishes these)
+        - www subdomain: CNAME record -> <username>.github.io
+  4. Settings -> Pages -> Custom domain -> enter raghav.ai -> Save.
+  5. Tick "Enforce HTTPS" (free TLS cert via GitHub/Let's Encrypt; takes a few
+     mins to provision). Done — https://raghav.ai is live.
+
+DEPLOY UPDATES: just `git push`. Pages rebuilds automatically. No CI needed.
+
+--------------------------------------------------------------------------------
+5. BUILD PLAN / ORDER OF OPERATIONS (when you say "go")
+--------------------------------------------------------------------------------
+  [ ] Step 1: Scaffold index.html with semantic sections (header, timeline,
+              bio, awards, publications, misc).
+  [ ] Step 2: Write style.css — adapt karpathy's 12-col grid, container,
+              timeline (border-left line + dots), card grid, .pub blocks,
+              and the two responsive breakpoints (991px, 768px).
+  [ ] Step 3: Drop in YOUR content from the resume (section 2 above).
+  [ ] Step 4: Add assets/ (headshot is the one thing only YOU can provide;
+              logos/icons can be sourced or we can use simple text/emoji).
+  [ ] Step 5: Implement email reveal (rot13 like karpathy) OR plain mailto.
+  [ ] Step 6: Test locally:  python3 -m http.server 8000  -> open localhost:8000
+              Check desktop + mobile (devtools responsive mode).
+  [ ] Step 7: Create the GitHub repo, push, enable Pages (section 4).
+  [ ] Step 8: (Optional) custom domain + enforce HTTPS.
+
+--------------------------------------------------------------------------------
+6. THINGS I NEED FROM YOU BEFORE CODING
+--------------------------------------------------------------------------------
+  1. A profile photo (headshot) -> assets/me.jpg.
+  2. Your exact LinkedIn URL and Google Scholar URL (resume references them but
+     the literal links weren't in the extracted text).
+  3. Your GitHub username (assumed "raghavchalapathy" from the repo URL — confirm).
+  4. Do you want a custom domain? If yes, which one? (affects CNAME/DNS step).
+  5. Preferred tagline for the <h2> subtitle.
+  6. Any extra sections karpathy doesn't have but you want
+     (e.g. "Skills", "Talks", "Projects", "Blog").
+  7. Confirm the visual vibe: clone karpathy's minimalist look closely, or
+     add your own color accent / dark-mode toggle?
+
+--------------------------------------------------------------------------------
+7. OPTIONAL ENHANCEMENTS (YAGNI-check each before adding!)
+--------------------------------------------------------------------------------
+  - Dark mode toggle (prefers-color-scheme media query — pure CSS, cheap).
+  - Open Graph / Twitter meta tags for nice link previews when shared.
+  - favicon.ico.
+  - A "Resume (PDF)" download button linking to your CV.
+  - Smooth scroll + a tiny top nav (only if the page gets long).
+  Keep each addition justified — don't bloat the "0 frameworks" purity.
+
+================================================================================
+ END OF PLAN. Say the word and I'll scaffold index.html + style.css next.
+================================================================================
