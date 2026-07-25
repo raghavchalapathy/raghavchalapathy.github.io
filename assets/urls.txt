@@ -3,7 +3,7 @@ Github URL:
    Github username : raghav_chalapathy
    Giturl: https://github.com/raghavchalapathy
 Custom Domain: raghavchalapathy.ai
-Preferred Tagline for subtitle: I like to Build, Ship and Scale AI Agents for Agentic Commerce across Industries
+Preferred Tagline for subtitle: I like to Build, Ship and Scale AppliedAI Agents for Agentic Commerce across Industries
 Youtube Channel: https://www.youtube.com/@raghavchalapathy
 Substack : https://appliedaifab.substack.com/
 Skool Community: https://www.skool.com/applied-ai-fab-2262
