@@ -221,32 +221,36 @@ hr {
 /* Community CTA banner */
 .cta {
     margin: 30px 0 10px 0;
-    padding: 24px;
+    padding: 20px;
     border-radius: 10px;
     background: linear-gradient(135deg, #0E64F5 0%, #6A3DF5 100%);
     color: white;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 24px;
 }
 .cta-brand {
+    flex-shrink: 0;
     display: inline-block;
-    margin-bottom: 14px;
     transition: transform 0.15s ease, opacity 0.15s ease;
 }
 .cta-brand:hover { transform: translateY(-2px); opacity: 0.92; }
 .cta-brand img {
     display: block;
-    width: 320px;
+    width: 210px;
     max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
+.cta-body { flex: 1; min-width: 260px; }
 .cta-title { font-size: 22px; font-weight: bold; }
-.cta-sub { font-size: 15px; opacity: 0.9; margin-top: 4px; max-width: 520px; }
-.cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.cta-sub { font-size: 15px; opacity: 0.9; margin-top: 4px; max-width: 560px; }
+.cta-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+@media (max-width: 560px) {
+    .cta { text-align: center; justify-content: center; }
+    .cta-btns { justify-content: center; }
+}
 .btn {
     display: inline-flex;
     align-items: center;
