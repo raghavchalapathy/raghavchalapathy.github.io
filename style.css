@@ -247,7 +247,7 @@ hr {
 }
 .btn:hover { transform: translateY(-2px); opacity: 0.92; }
 .btn-substack { background: #FF6719; color: white; }
-.btn-skool { background: white; color: #111; }
+.btn-circle { background: #5D5FEF; color: white; }
 .btn-ico {
     width: 18px;
     height: 18px;
