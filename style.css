@@ -231,6 +231,19 @@ hr {
     justify-content: space-between;
     gap: 16px;
 }
+.cta-brand {
+    display: inline-block;
+    margin-bottom: 14px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.cta-brand:hover { transform: translateY(-2px); opacity: 0.92; }
+.cta-brand img {
+    display: block;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
 .cta-title { font-size: 22px; font-weight: bold; }
 .cta-sub { font-size: 15px; opacity: 0.9; margin-top: 4px; max-width: 520px; }
 .cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
